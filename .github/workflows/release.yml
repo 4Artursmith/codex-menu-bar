@@ -1,0 +1,281 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Build, Sign, Notarize and Release
+    runs-on: macos-15
+    timeout-minutes: 30
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode 26.0.1
+        run: sudo xcode-select -s /Applications/Xcode_26.0.1.app/Contents/Developer
+
+      - name: Show Build Environment
+        run: |
+          xcodebuild -version
+          swift --version
+          echo "macOS: $(sw_vers -productVersion)"
+          echo "Tag: ${{ github.ref_name }}"
+
+      - name: Import Code Signing Certificate
+        env:
+          CERTIFICATE_BASE64: ${{ secrets.DEVELOPER_CERTIFICATE_BASE64 }}
+          CERTIFICATE_PASSWORD: ${{ secrets.CERTIFICATE_PASSWORD }}
+        run: |
+          # Create temporary keychain
+          KEYCHAIN_PATH=$RUNNER_TEMP/app-signing.keychain-db
+          KEYCHAIN_PASSWORD=$(uuidgen)
+
+          echo "Creating temporary keychain..."
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          # Import certificate
+          echo "Importing code signing certificate..."
+          echo "$CERTIFICATE_BASE64" | base64 --decode > certificate.p12
+          security import certificate.p12 \
+            -k "$KEYCHAIN_PATH" \
+            -P "$CERTIFICATE_PASSWORD" \
+            -T /usr/bin/codesign \
+            -T /usr/bin/productsign
+
+          # Allow codesign and xcodebuild to access keychain without prompt
+          security set-key-partition-list -S apple-tool:,apple:,codesign:,xcodebuild: \
+            -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+          # Set as default keychain
+          security list-keychains -d user -s "$KEYCHAIN_PATH"
+          security default-keychain -s "$KEYCHAIN_PATH"
+
+          # Clean up certificate file
+          rm -f certificate.p12
+
+          # Find the imported identity
+          echo "Finding imported Developer ID certificate..."
+          IDENTITY=$(security find-identity -v -p codesigning "$KEYCHAIN_PATH" | grep "Developer ID Application" | head -1 | sed -E 's/.*"(.+)"/\1/')
+
+          if [ -z "$IDENTITY" ]; then
+            echo "❌ Error: Developer ID Application certificate not found"
+            security find-identity -v -p codesigning "$KEYCHAIN_PATH"
+            exit 1
+          fi
+
+          echo "Found identity: $IDENTITY"
+          echo "SIGNING_IDENTITY=$IDENTITY" >> $GITHUB_ENV
+
+          echo "✅ Code signing certificate imported successfully"
+
+      - name: Build Release (Unsigned)
+        run: |
+          echo "Building release (will sign manually after)..."
+          xcodebuild build \
+            -project "Codex Usage.xcodeproj" \
+            -scheme "Codex Usage" \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+          echo "✅ Build completed successfully"
+
+      - name: Sign App Bundle
+        run: |
+          APP_PATH="build/Build/Products/Release/Codex Menu Bar.app"
+
+          echo "Using signing identity: $SIGNING_IDENTITY"
+          echo "Signing Sparkle framework components in correct order..."
+
+          # IMPORTANT: Sign in order - XPC Services first, then framework, then main app
+          # DO NOT use --deep flag as it breaks XPC service signatures
+          # Reference: https://sparkle-project.org/documentation/sandboxing/
+
+          # 1. Sign XPC Services first
+          echo "Signing Installer.xpc..."
+          codesign --force --sign "$SIGNING_IDENTITY" \
+            --timestamp \
+            --options runtime \
+            "$APP_PATH/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Installer.xpc"
+
+          echo "Signing Downloader.xpc..."
+          codesign --force --sign "$SIGNING_IDENTITY" \
+            --timestamp \
+            --options runtime \
+            "$APP_PATH/Contents/Frameworks/Sparkle.framework/Versions/B/XPCServices/Downloader.xpc"
+
+          # 2. Sign Autoupdate helper
+          echo "Signing Autoupdate..."
+          codesign --force --sign "$SIGNING_IDENTITY" \
+            --timestamp \
+            --options runtime \
+            "$APP_PATH/Contents/Frameworks/Sparkle.framework/Versions/B/Autoupdate"
+
+          # 3. Sign Updater.app
+          echo "Signing Updater.app..."
+          codesign --force --sign "$SIGNING_IDENTITY" \
+            --timestamp \
+            --options runtime \
+            "$APP_PATH/Contents/Frameworks/Sparkle.framework/Versions/B/Updater.app"
+
+          # 4. Sign the Sparkle framework itself
+          echo "Signing Sparkle framework..."
+          codesign --force --sign "$SIGNING_IDENTITY" \
+            --timestamp \
+            --options runtime \
+            "$APP_PATH/Contents/Frameworks/Sparkle.framework"
+
+          # 5. Sign the main app bundle (WITHOUT --deep to preserve nested signatures)
+          echo "Signing main app bundle..."
+          codesign --force --sign "$SIGNING_IDENTITY" \
+            --timestamp \
+            --options runtime \
+            --entitlements "Codex Usage/Codex UsageRelease.entitlements" \
+            "$APP_PATH"
+
+          echo "✅ App bundle signed with $SIGNING_IDENTITY"
+
+      - name: Verify Code Signature
+        run: |
+          APP_PATH="build/Build/Products/Release/Codex Menu Bar.app"
+
+          echo "Verifying code signature..."
+          # Verify signature is valid
+          codesign --verify --deep --strict --verbose=2 "$APP_PATH"
+
+          # Display signature details
+          echo ""
+          echo "Code signature details:"
+          codesign -dv --verbose=4 "$APP_PATH" 2>&1
+
+          # Check Gatekeeper assessment
+          echo ""
+          echo "Gatekeeper assessment:"
+          spctl --assess --type execute --verbose "$APP_PATH" 2>&1 || true
+
+          echo "✅ Code signature verified"
+
+      - name: Notarize App
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_ID_PASSWORD: ${{ secrets.APPLE_ID_PASSWORD }}
+          TEAM_ID: ${{ secrets.TEAM_ID }}
+        run: |
+          APP_PATH="build/Build/Products/Release/Codex Menu Bar.app"
+
+          echo "Creating ZIP for notarization..."
+          ditto -c -k --keepParent "$APP_PATH" "notarization.zip"
+
+          echo "Submitting app for notarization..."
+          echo "This may take 5-15 minutes..."
+          xcrun notarytool submit "notarization.zip" \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_ID_PASSWORD" \
+            --team-id "$TEAM_ID" \
+            --wait \
+            --timeout 30m
+
+          echo ""
+          echo "Notarization successful! Stapling ticket to app..."
+          xcrun stapler staple "$APP_PATH"
+
+          # Verify stapling
+          echo ""
+          echo "Verifying stapled notarization ticket..."
+          xcrun stapler validate "$APP_PATH"
+
+          # Clean up
+          rm -f notarization.zip
+
+          echo "✅ App notarized and stapled successfully!"
+
+      - name: Create Release Artifact
+        run: |
+          # Create artifacts directory
+          mkdir -p release
+
+          # Copy app bundle (preserving attributes and signatures)
+          echo "Copying signed and notarized app bundle..."
+          cp -pR "build/Build/Products/Release/Codex Menu Bar.app" release/
+
+          # Create ZIP archive using ditto (preserves code signatures and notarization)
+          echo "Creating release ZIP..."
+          cd release
+          ditto -c -k --keepParent "Codex Menu Bar.app" "Codex-Menu-Bar.zip"
+
+          # Generate SHA256 checksum
+          shasum -a 256 "Codex-Menu-Bar.zip" > "Codex-Menu-Bar.zip.sha256"
+
+          # Display checksum for logs
+          echo ""
+          echo "SHA256 Checksum:"
+          cat "Codex-Menu-Bar.zip.sha256"
+
+          echo "✅ Release artifact created"
+
+      - name: Extract Release Notes from CHANGELOG
+        id: changelog_notes
+        continue-on-error: true
+        run: |
+          # Extract version from tag
+          VERSION="${{ github.ref_name }}"
+          VERSION="${VERSION#v}"
+
+          echo "Extracting release notes for version $VERSION from CHANGELOG.md"
+
+          # Extract the section for this version from CHANGELOG.md
+          # This extracts everything between ## [$VERSION] and the next ## or ---
+          awk "/## \[$VERSION\]/{flag=1; next} /^---$|^## \[/{flag=0} flag" CHANGELOG.md > release-notes.md
+
+          # Remove trailing empty lines
+          sed -i.bak '/^$/d' release-notes.md 2>/dev/null || sed -i '' -e '/^$/d' release-notes.md
+
+          # Check if we got content
+          if [ ! -s release-notes.md ]; then
+            echo "No release notes found in CHANGELOG.md for version $VERSION"
+            echo "changelog_extracted=false" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          echo "Extracted release notes:"
+          cat release-notes.md
+
+          echo "changelog_extracted=true" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: ${{ github.ref_name }}
+          draft: false
+          body_path: ${{ steps.changelog_notes.outputs.changelog_extracted == 'true' && 'release-notes.md' || '' }}
+          generate_release_notes: ${{ steps.changelog_notes.outputs.changelog_extracted != 'true' }}
+          files: |
+            release/Codex-Menu-Bar.zip
+            release/Codex-Menu-Bar.zip.sha256
+        env:
+          # Use PAT instead of GITHUB_TOKEN to trigger downstream workflows
+          GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
+
+      - name: Release Summary
+        run: |
+          echo "🎉 Release ${{ github.ref_name }} created successfully!"
+          echo ""
+          echo "✅ App signed with Developer ID Application certificate"
+          echo "✅ App notarized by Apple"
+          echo "✅ Notarization ticket stapled to app"
+          echo "✅ Release published to GitHub"
+          echo ""
+          echo "Next steps:"
+          echo "  - Appcast generation workflow will trigger automatically"
+          echo "  - Homebrew cask will update automatically"
+          echo "  - Users with automatic updates enabled will be notified"

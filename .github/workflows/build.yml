@@ -1,0 +1,78 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: macos-15
+    timeout-minutes: 20
+
+    # CI builds use no code signing (faster, sufficient for testing)
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode 26.0.1
+        run: sudo xcode-select -s /Applications/Xcode_26.0.1.app/Contents/Developer
+
+      - name: Show Build Environment
+        run: |
+          xcodebuild -version
+          swift --version
+          echo "macOS: $(sw_vers -productVersion)"
+
+      - name: Build Debug (for tests)
+        run: |
+          xcodebuild build \
+            -project "Codex Usage.xcodeproj" \
+            -scheme "Codex Usage" \
+            -configuration Debug \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Run Tests
+        run: |
+          xcodebuild test \
+            -project "Codex Usage.xcodeproj" \
+            -scheme "Codex Usage" \
+            -configuration Debug \
+            -derivedDataPath build \
+            -destination "platform=macOS" \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Build Release
+        run: |
+          xcodebuild build \
+            -project "Codex Usage.xcodeproj" \
+            -scheme "Codex Usage" \
+            -configuration Release \
+            -derivedDataPath build \
+            CODE_SIGN_IDENTITY="" \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGNING_ALLOWED=NO
+
+      - name: Create App Bundle Artifact
+        run: |
+          mkdir -p artifacts
+          cp -R "build/Build/Products/Release/Codex Menu Bar.app" artifacts/
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Codex-Menu-Bar-${{ github.sha }}
+          path: artifacts/
+          retention-days: 7

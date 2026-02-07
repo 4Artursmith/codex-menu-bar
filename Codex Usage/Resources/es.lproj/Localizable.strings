@@ -1,0 +1,694 @@
+/*
+   Localizable.strings
+   Codex Menu Bar
+
+   Spanish (Español)
+   Created by Codex Code on 2025-12-27.
+*/
+
+/* ==================== */
+/* MARK: - App Info */
+/* ==================== */
+"app.name" = "Rastreador de Uso de Codex";
+"app.window.main" = "Uso de Codex";
+"app.window.settings" = "Configuración";
+"app.window.github_prompt" = "Apoya Codex Menu Bar";
+
+/* ==================== */
+/* MARK: - Common Actions */
+/* ==================== */
+"common.ok" = "OK";
+"common.cancel" = "Cancelar";
+"common.save" = "Guardar";
+"common.delete" = "Eliminar";
+"common.done" = "Hecho";
+"common.close" = "Cerrar";
+"common.refresh" = "Actualizar";
+"common.settings" = "Ajustes";
+"common.quit" = "Salir";
+"common.validate" = "Validar";
+"common.yes" = "Sí";
+"common.no" = "No";
+
+/* ==================== */
+/* MARK: - Settings Navigation */
+/* ==================== */
+"settings.title" = "Ajustes";
+"settings.personal_usage" = "Uso Personal";
+"settings.personal_usage.description" = "Rastrea tu uso del nivel gratuito de Codex.ai";
+"settings.api_billing" = "Facturación de API";
+"settings.api_billing.description" = "Monitorea la facturación y créditos de la Consola API";
+"settings.general" = "General";
+"settings.general.description" = "Comportamiento y preferencias de la aplicación";
+"settings.appearance" = "Apariencia";
+"settings.appearance.description" = "Personalización del ícono de la barra de menú";
+"settings.session_management" = "Gestión de Sesiones";
+"settings.session_management.description" = "Gestión automática de sesiones";
+"settings.notifications" = "Notificaciones";
+"settings.notifications.description" = "Alertas y notificaciones de uso";
+"settings.codex_cli" = "Codex CLI";
+"settings.codex_cli.description" = "Integración de línea de estado del terminal";
+"settings.updates" = "Actualizaciones";
+"settings.updates.description" = "Mantén tu aplicación actualizada";
+"settings.about" = "Acerca de";
+"settings.about.description" = "Información y créditos de la aplicación";
+
+/* ==================== */
+/* MARK: - Menu Bar */
+/* ==================== */
+"menubar.codex_usage" = "Uso de Codex";
+"menubar.session_usage" = "Uso de Sesión";
+"menubar.weekly_usage" = "Semanal";
+"menubar.opus_usage" = "Opus";
+"menubar.sonnet_usage" = "Sonnet";
+"menubar.extra_usage" = "Uso Extra";
+"menubar.api_credits" = "Créditos API";
+"menubar.5_hour_window" = "Ventana móvil de 5 horas";
+"menubar.all_models" = "Todos los modelos";
+"menubar.weekly" = "Semanal";
+"menubar.openai_console" = "Consola API de OpenAI";
+"menubar.used" = "Usado";
+"menubar.remaining" = "Restante";
+"menubar.resets_time" = "Se reinicia %@";
+"menubar.click_status" = "Clic para abrir status.openai.com";
+
+/* ==================== */
+/* MARK: - Usage Status */
+/* ==================== */
+"usage.high_session" = "Uso Elevado de Sesión";
+"usage.high_session.desc" = "Considera tomar un descanso para reiniciar tu ventana de sesión";
+"usage.weekly_approaching" = "Acercándose al Límite Semanal";
+"usage.weekly_approaching.desc" = "Estás cerca de tu límite semanal de tokens";
+"usage.efficient" = "Uso Eficiente";
+"usage.efficient.desc" = "¡Excelente trabajo gestionando tu consumo de tokens!";
+
+/* ==================== */
+/* MARK: - General Settings */
+/* ==================== */
+"general.launch_at_login" = "Iniciar al iniciar sesión";
+"general.launch_at_login.description" = "Iniciar automáticamente Codex Menu Bar al iniciar sesión en tu Mac";
+"general.refresh_interval" = "Intervalo de Actualización";
+"general.refresh_interval.description" = "Intervalos más cortos proporcionan datos más en tiempo real pero pueden afectar la batería";
+"general.check_overage_limit" = "Verificar Límite de Uso Extra";
+"general.check_overage_limit.description" = "Obtener y mostrar información de costo mensual y límite de exceso";
+"general.language.title" = "Idioma";
+"general.language.select" = "Seleccionar Idioma";
+"general.language.restart_note" = "Los cambios de idioma se aplicarán después de reiniciar la aplicación";
+"general.language.restart_app" = "Reiniciar para Aplicar";
+
+/* ==================== */
+/* MARK: - Notifications Settings */
+/* ==================== */
+"notifications.enable" = "Habilitar notificaciones";
+"notifications.enable.description" = "Recibir alertas al acercarse a los límites de uso";
+"notifications.alert_thresholds" = "Umbrales de Alerta";
+"notifications.threshold.warning" = "Advertencia";
+"notifications.threshold.high" = "Uso Alto";
+"notifications.threshold.critical" = "Crítico";
+"notifications.threshold.session_reset" = "Reinicio de Sesión";
+
+/* ==================== */
+/* MARK: - Setup Wizard */
+/* ==================== */
+"setup.welcome.title" = "Bienvenido a Codex Menu Bar";
+"setup.welcome.subtitle" = "Configura tu acceso a la API para comenzar a rastrear el uso";
+"setup.step.get_session_key" = "Obtén tu Clave de Sesión";
+"setup.open_codex_ai" = "Abrir codex.ai";
+"setup.show_instructions" = "Mostrar Instrucciones";
+"setup.hide_instructions" = "Ocultar";
+"setup.validation.success" = "Conectado exitosamente a la organización";
+
+/* ==================== */
+/* MARK: - About */
+/* ==================== */
+"about.version" = "Versión %@";
+"about.created_by" = "Creado Por";
+"about.contributors" = "Colaboradores (%d)";
+"about.contributors_loading" = "Colaboradores";
+"about.links" = "Enlaces";
+"about.star_github" = "Dar Estrella en GitHub";
+"about.report_issue" = "Reportar Problema";
+"about.send_feedback" = "Enviar Comentarios";
+"about.mit_license" = "Licencia MIT • Código Abierto";
+"about.copyright" = "© 2025 Hamed Elfayome";
+
+/* ==================== */
+/* MARK: - Notification Messages */
+/* ==================== */
+"notification.session_warning.title" = "Advertencia de Uso de Sesión";
+"notification.session_warning.message" = "Has usado %@ de tu límite de sesión de 5 horas. %@";
+"notification.session_critical.title" = "Uso de Sesión Crítico";
+"notification.session_critical.message" = "¡Has usado %@ de tu límite de sesión de 5 horas! %@";
+"notification.session_reset.title" = "Sesión Reiniciada";
+"notification.session_reset.message" = "¡Tu sesión se ha reiniciado! Ahora tienes una sesión de 5 horas nueva disponible.";
+"notification.session_auto_started.title" = "Sesión Iniciada Automáticamente";
+"notification.session_auto_started.message" = "Una nueva sesión ha sido iniciada automáticamente. ¡Tu sesión de 5 horas está lista!";
+"notification.session_auto_start_failed.title" = "Inicio Automático Fallido";
+"notification.session_auto_start_failed.message" = "Error al iniciar sesión automáticamente. Verifica tus credenciales.";
+"notification.weekly_warning.title" = "Advertencia de Uso Semanal";
+"notification.weekly_warning.message" = "Has usado %@ de tu límite semanal. %@";
+"notification.weekly_critical.title" = "Uso Semanal Crítico";
+"notification.weekly_critical.message" = "¡Has usado %@ de tu límite semanal! %@";
+"notification.opus_warning.title" = "Advertencia de Uso de Opus";
+"notification.opus_warning.message" = "Has usado %@ de tu límite semanal de Opus. %@";
+"notification.opus_critical.title" = "Uso de Opus Crítico";
+"notification.opus_critical.message" = "¡Has usado %@ de tu límite semanal de Opus! %@";
+"notification.enabled.title" = "Notificaciones Habilitadas";
+"notification.enabled.message" = "Ahora recibirás alertas en los umbrales de uso del 75%, 90% y 95%, además de notificaciones de reinicio de sesión.";
+
+/* ==================== */
+/* MARK: - Error Messages */
+/* ==================== */
+"error.session_key_not_found" = "No se encontró la clave de sesión";
+"error.session_key_not_found.suggestion" = "Por favor configura tu clave de sesión de Codex en Ajustes";
+"error.session_key_invalid" = "Clave de sesión inválida";
+"error.session_key_invalid.suggestion" = "Por favor verifica el formato de tu clave de sesión. Debe comenzar con 'sk-codex-'";
+"error.network_unavailable" = "Sin conexión a internet";
+"error.network_unavailable.suggestion" = "Por favor verifica tu conexión a internet e intenta de nuevo";
+"error.network_timeout" = "Tiempo de espera agotado";
+"error.network_timeout.suggestion" = "Por favor intenta de nuevo. Si el problema persiste, verifica el estado de Codex en status.openai.com";
+"error.api_unauthorized" = "Acceso no autorizado";
+"error.api_unauthorized.suggestion" = "Tu clave de sesión puede haber expirado. Por favor actualízala en Ajustes";
+"error.api_server_error" = "Error del servidor";
+"error.api_server_error.suggestion" = "El servidor encontró un error. Por favor intenta de nuevo más tarde";
+"error.api_rate_limited" = "Límite de tasa excedido";
+"error.api_rate_limited.suggestion" = "Por favor espera unos momentos antes de intentar de nuevo";
+/* ==================== */
+/* MARK: - Appearance Settings */
+/* ==================== */
+"appearance.menu_bar_icons" = "Íconos de Barra de Menú";
+"appearance.menu_bar_icons.subtitle" = "Personaliza qué métricas aparecen en tu barra de menú";
+"appearance.show_icon_names" = "Mostrar nombres de íconos";
+"appearance.show_icon_names.description" = "Mostrar etiquetas de métricas (S:, W:, API:) junto a los íconos";
+"appearance.monochrome_mode" = "Monocromo (Adaptativo)";
+"appearance.monochrome_mode.description" = "Los íconos se adaptan automáticamente al modo claro/oscuro";
+"appearance.metric_configuration" = "Configuración de Métricas";
+"appearance.drag_to_reorder" = "Arrastra para reordenar íconos. Las métricas deshabilitadas se ocultan de la barra de menú.";
+
+/* ==================== */
+/* MARK: - Session Management */
+/* ==================== */
+"session.auto_start" = "Auto-iniciar sesión al reiniciar";
+"session.auto_start.description" = "Enviar automáticamente 'Hola' a Codex cuando tu sesión se reinicie a 0%. Esto mantiene tu sesión siempre lista sin intervención manual.";
+"session.enable_auto_start" = "Habilitar auto-inicio de sesión";
+"session.beta_badge" = "BETA";
+
+/* ==================== */
+/* MARK: - Setup Wizard (Additional) */
+/* ==================== */
+"setup.step.get_session_key.description" = "Necesitarás extraer tu clave de sesión de codex.ai";
+"setup.step.enter_session_key" = "Ingresa tu Clave de Sesión";
+"setup.instruction.step1" = "Abre Herramientas de Desarrollador (F12 o Cmd+Option+I)";
+"setup.instruction.step2" = "Ve a Aplicación/Almacenamiento → Cookies → https://codex.ai";
+"setup.instruction.step3" = "Encuentra la cookie 'sessionKey'";
+"setup.instruction.step4" = "Haz doble clic en su Valor y copia (Cmd+C)";
+"setup.paste_session_key" = "Pega el valor de sessionKey que copiaste";
+"setup.auto_start_session" = "Auto-iniciar sesión al reiniciar";
+"setup.auto_start_session.description" = "Enviar automáticamente 'Hola' a Codex cuando tu sesión se reinicie a 0%. Esto mantiene tu sesión siempre lista sin intervención manual.";
+"setup.enable_auto_start" = "Habilitar auto-inicio de sesión";
+"setup.menubar_appearance" = "Apariencia de Barra de Menú";
+"setup.choose_icon_style" = "Elige tu estilo de ícono preferido";
+"setup.monochrome_adaptive" = "Monocromo (Adaptativo)";
+
+/* ==================== */
+/* MARK: - Icon Styles */
+/* ==================== */
+"icon_style.battery" = "Batería";
+"icon_style.percentage" = "Porcentaje";
+"icon_style.text_only" = "Solo Texto";
+"icon_style.minimal" = "Mínimo";
+
+/* ==================== */
+/* MARK: - Metric Types */
+/* ==================== */
+"metric.session_usage" = "Uso de Sesión";
+"metric.session_usage.description" = "Ventana móvil de uso de 5 horas";
+"metric.week_usage" = "Uso Semanal";
+"metric.week_usage.description" = "Uso semanal de tokens (todos los modelos)";
+"metric.api_credits" = "Créditos API";
+"metric.api_credits.description" = "Créditos de facturación de Consola API";
+
+/* ==================== */
+/* MARK: - Display Modes */
+/* ==================== */
+"display.remaining_credits" = "Créditos Restantes";
+"display.remaining_credits.description" = "Mostrar solo créditos restantes";
+"display.used_amount" = "Cantidad Usada";
+"display.used_amount.description" = "Mostrar solo cantidad gastada";
+"display.both_used_total" = "Ambos (Usado / Total)";
+"display.both_used_total.description" = "Mostrar tanto usado como total";
+"display.percentage" = "Porcentaje";
+"display.percentage.description" = "Mostrar como porcentaje (ej. 60%)";
+"display.token_count" = "Conteo de Tokens";
+"display.token_count.description" = "Mostrar números de tokens (ej. 600K/1M)";
+
+/* ==================== */
+/* MARK: - Validation Messages */
+/* ==================== */
+"validation.session_key_too_short" = "Clave de sesión demasiado corta";
+"validation.session_key_too_long" = "Clave de sesión demasiado larga";
+"validation.invalid_prefix" = "Prefijo de clave de sesión inválido";
+"validation.invalid_characters" = "Caracteres inválidos en clave de sesión";
+"validation.invalid_format" = "Formato de clave de sesión inválido";
+"validation.contains_whitespace" = "La clave de sesión contiene espacios en blanco";
+
+/* ==================== */
+/* MARK: - GitHub Star Prompt */
+/* ==================== */
+"github.enjoy_app" = "¿Disfrutando Codex Menu Bar?";
+"github.star_description" = "Si esta aplicación te ha sido útil, ¡considera darle una estrella en GitHub! Ayuda a otros a descubrir el proyecto y motiva el desarrollo continuo.";
+"github.star_button" = "Dar Estrella en GitHub";
+"github.maybe_later" = "Quizás Más Tarde";
+"github.never_show" = "No Mostrar de Nuevo";
+
+/* ==================== */
+/* MARK: - API Settings */
+/* ==================== */
+"api.enable_tracking" = "Habilitar rastreo de API";
+"api.enable_tracking.description" = "Rastrea tus créditos y gastos de la Consola API de OpenAI";
+"api.session_key_placeholder" = "sk-codex-api03-...";
+"api.configure" = "Configurar Rastreo de API";
+"api.configure.description" = "Monitorea el uso y créditos de tu API de Consola OpenAI";
+"api.instructions" = "Para rastrear el uso de API, necesitas proporcionar tu clave de sesión de API:";
+"api.instruction_step1" = "Inicia sesión en console.openai.com";
+"api.instruction_step2" = "Abre Herramientas de Desarrollador (F12 o Cmd+Option+I)";
+"api.instruction_step3" = "Ve a Aplicación → Cookies → https://console.openai.com";
+"api.instruction_step4" = "Encuentra 'sessionKey' y copia su valor";
+
+/* ==================== */
+/* MARK: - Personal Usage */
+/* ==================== */
+"personal.configure" = "Configurar Uso Personal";
+"personal.configure.description" = "Rastrea tu uso del nivel gratuito en codex.ai";
+"personal.status" = "Estado";
+"personal.session_key" = "Clave de Sesión";
+"personal.session_key.configured" = "Configurada";
+"personal.session_key.not_configured" = "No Configurada";
+"personal.reconfigure" = "Reconfigurar";
+"personal.remove" = "Eliminar Clave de Sesión";
+
+/* ==================== */
+/* MARK: - Codex Code (CLI) */
+/* ==================== */
+"codexcode.title" = "Integración de Codex CLI";
+"codexcode.description" = "Muestra información de uso en la línea de estado de tu terminal";
+"codexcode.coming_soon" = "Próximamente";
+"codexcode.features_description" = "La integración con Codex Code CLI para visualización en línea de estado del terminal llegará en una actualización futura.";
+
+/* ==================== */
+/* MARK: - Additional UI Labels (Spanish) */
+/* ==================== */
+"ui.app_behavior" = "Comportamiento de la Aplicación";
+"ui.usage_tracking" = "Seguimiento de Uso";
+"ui.global_settings" = "Configuración Global";
+"ui.menu_bar_metrics" = "Métricas de Barra de Menú";
+"ui.quick_actions" = "Acciones Rápidas";
+"ui.how_it_works" = "Cómo funciona";
+"ui.display_components" = "Componentes de Visualización";
+"ui.requirements" = "Requisitos";
+"ui.live_preview" = "Vista Previa en Vivo";
+"ui.updates_realtime" = "Actualizaciones en tiempo real";
+"ui.organization" = "Organización";
+"ui.icon_style" = "Estilo de Ícono";
+"ui.display_mode" = "Modo de Visualización";
+"ui.at_least_one_metric" = "Al menos una métrica debe estar habilitada";
+
+/* Session Management (Additional) */
+"session.subtitle" = "Inicialización y mantenimiento automático de sesiones";
+"session.auto_description_line1" = "• Detecta cuando tu sesión se reinicia a 0%";
+"session.auto_description_line2" = "• Envía 'Hola' a Codex (modelo más económico)";
+"session.auto_description_line3" = "• Usa un chat temporal que no aparecerá en tu historial";
+"session.auto_description_line4" = "• Nueva sesión de 5 horas lista instantáneamente";
+
+/* Codex CLI */
+"codexcode.subtitle" = "Personaliza la visualización de tu línea de estado del terminal";
+"codexcode.preview_label" = "Vista Previa en Vivo";
+"codexcode.preview_description" = "Así se verá tu línea de estado en Codex CLI";
+"codexcode.component_directory" = "Nombre de directorio";
+"codexcode.component_branch" = "Rama Git";
+"codexcode.component_usage" = "Estadísticas de uso";
+"codexcode.component_progressbar" = "Barra de progreso";
+"codexcode.component_resettime" = "Tiempo de reinicio";
+"codexcode.requirement_sessionkey" = "• Clave de sesión configurada en Credenciales → pestaña Codex.ai";
+"codexcode.requirement_restart" = "• Reiniciar Codex CLI después de aplicar cambios";
+"codexcode.error_no_components" = "Seleccione al menos un componente para mostrar";
+"codexcode.error_no_sessionkey" = "Clave de sesión no configurada. Por favor configúrela en la pestaña de Uso Personal primero.";
+"codexcode.success_applied" = "¡Configuración aplicada! Reinicia Codex CLI para ver los cambios.";
+"codexcode.success_disabled" = "Línea de estado deshabilitada. Reinicia Codex CLI.";
+"codexcode.preview_no_components" = "No hay componentes seleccionados";
+
+/* API Billing */
+"api.title" = "Facturación de API";
+"api.subtitle" = "Monitorea el uso y gasto de la API";
+"api.enable_billing_tracking" = "Habilitar seguimiento de facturación de API";
+"api.enable_billing_description" = "Monitorea tu uso de API, gasto actual y créditos prepagados restantes";
+"api.label_api_session_key" = "Clave de Sesión de API";
+"api.placeholder_api_session_key" = "sk-codex-api03-...";
+"api.help_api_session_key" = "Tu clave de sesión de console.openai.com";
+"api.button_fetch_organizations" = "Obtener Organizaciones";
+"api.button_fetching" = "Obteniendo...";
+"api.button_save_configuration" = "Guardar Configuración";
+"api.success_organizations_found" = "Se encontraron %d organización(es)";
+"api.error_fetch_failed" = "Error al obtener organizaciones: %@";
+"api.success_configuration_saved" = "Configuración de API guardada exitosamente";
+
+/* Personal Usage */
+"personal.title" = "Uso Personal";
+"personal.subtitle" = "Rastrea tu uso y sesiones de Codex.ai";
+"personal.label_session_key" = "Clave de Sesión";
+"personal.placeholder_session_key" = "sk-codex-sid-...";
+"personal.help_session_key" = "Pega tu cookie sessionKey desde codex.ai DevTools";
+"personal.button_test_connection" = "Probar Conexión";
+"personal.button_save_and_continue" = "Guardar y Continuar";
+"personal.button_remove_key" = "Eliminar Clave";
+"personal.success_connected" = "Conectado exitosamente a la organización";
+"personal.confirm_remove_title" = "¿Eliminar Clave de Sesión?";
+"personal.confirm_remove_message" = "Esto detendrá el seguimiento de tu uso personal.";
+
+/* Error Presenter */
+"error.code_label" = "Código de Error:";
+"error.what_to_do" = "Qué hacer:";
+"error.occurred_at" = "Ocurrió: %@";
+
+/* General Settings */
+"general.slider_realtime" = "Actualizaciones en tiempo real";
+"general.slider_frequent" = "Actualizaciones frecuentes";
+"general.slider_balanced" = "Modo equilibrado";
+"general.slider_efficient" = "Eficiente en energía";
+"general.slider_battery_saver" = "Ahorro de batería";
+"general.slider_fast" = "Rápido";
+"general.slider_balanced_label" = "Equilibrado";
+"general.slider_battery_saver_label" = "Ahorro de Batería";
+"general.available_languages" = "Idiomas Disponibles (%d)";
+
+/* Badges */
+"badge.new" = "NUEVO";
+"badge.beta" = "BETA";
+"badge.pro" = "PRO";
+
+/* Appearance */
+"appearance.title" = "Apariencia de Barra de Menú";
+"appearance.subtitle" = "Personaliza tus íconos y métricas de barra de menú";
+"appearance.global_settings" = "Configuración Global";
+"appearance.menu_bar_metrics" = "Métricas de Barra de Menú";
+"appearance.monochrome_title" = "Monocromo";
+"appearance.monochrome_description" = "Usar color adaptativo en lugar de colores de estado (verde/naranja/rojo)";
+"appearance.show_labels_title" = "Mostrar Etiquetas de Íconos";
+"appearance.show_labels_description" = "Mostrar etiquetas de prefijo (S:, W:, API:) para cada métrica";
+"appearance.show_remaining_title" = "Mostrar Porcentaje Restante";
+"appearance.show_remaining_description" = "Mostrar capacidad restante en lugar del porcentaje usado (como la batería de macOS)";
+"appearance.multiprofile_locked_title" = "Ajustes de Apariencia Bloqueados";
+"appearance.multiprofile_locked_description" = "Estos ajustes están deshabilitados mientras la Visualización Multi-Perfil está activa. Cada perfil usa su propia apariencia en modo multi-perfil.";
+"appearance.disable_multiprofile" = "Desactivar Visualización Multi-Perfil";
+
+/* Setup Wizard */
+"setup.step_number_1" = "1";
+"setup.step_number_2" = "2";
+"setup.step_title_get_key" = "Obtén tu Clave de Sesión";
+"setup.step_title_enter_key" = "Ingresa tu Clave de Sesión";
+"setup.step_description_get_key" = "Necesitarás extraer tu clave de sesión de codex.ai";
+"setup.button_open_codex" = "Abrir codex.ai";
+"setup.paste_instruction" = "Pega el valor sessionKey que copiaste";
+
+/* Preview */
+"preview.sample_text_codex" = "Codex";
+"preview.sample_percentage" = "60%";
+"preview.sample_card_content" = "El contenido de la tarjeta va aquí";
+"preview.sample_more_content" = "Más contenido";
+"preview.sample_update_every" = "Actualizar cada:";
+"preview.sample_5_minutes" = "5 minutos";
+
+/* New Keys */
+"api.single_organization" = "Se encontró y seleccionó automáticamente una sola organización";
+"codexcode.button_apply" = "Aplicar";
+"codexcode.button_reset" = "Restablecer";
+"error.generic" = "Error: %@";
+"personal.button_saving" = "Guardando...";
+"personal.button_setup_wizard" = "Asistente de Configuración";
+"personal.button_open_codex" = "Abrir codex.ai";
+"personal.success_key_saved" = "Clave de sesión guardada correctamente";
+
+/* ==================== */
+/* MARK: - Updates Settings */
+/* ==================== */
+"settings.updates.title" = "Actualizaciones de Software";
+"settings.updates.current_version" = "Versión Actual";
+"settings.updates.last_check" = "Última Verificación";
+"settings.updates.never_checked" = "Nunca";
+"settings.updates.automatic" = "Actualizaciones Automáticas";
+"settings.updates.automatic.description" = "Buscar y descargar actualizaciones automáticamente cada día";
+"settings.updates.check_now" = "Buscar Actualizaciones";
+"settings.updates.info.title" = "Actualizaciones Seguras";
+"settings.updates.info.description" = "Todas las actualizaciones están firmadas criptográficamente y verificadas antes de la instalación";
+"about.check_updates" = "Buscar Actualizaciones";
+
+/* ==================== */
+/* MARK: - Manage Profiles */
+/* ==================== */
+"profiles.title" = "Gestionar Perfiles";
+"profiles.subtitle" = "Crear y gestionar múltiples cuentas de Codex";
+"profiles.create_new" = "Crear Nuevo Perfil";
+"profiles.about_title" = "Acerca de los Perfiles";
+"profiles.about_description" = "Cada perfil tiene su propio:";
+"profiles.about_credentials" = "Credenciales de Codex.ai";
+"profiles.about_api" = "Credenciales de la Consola API";
+"profiles.about_cli" = "Sincronización de cuenta CLI";
+"profiles.about_appearance" = "Apariencia de la barra de menú";
+"profiles.about_notifications" = "Configuración de notificaciones";
+"profiles.about_refresh" = "Intervalo de actualización";
+"profiles.active_badge" = "Activo";
+"profiles.created" = "Creado";
+"profiles.cli_synced" = "CLI Sincronizado";
+"profiles.rename" = "Renombrar perfil";
+"profiles.activate" = "Activar perfil";
+"profiles.delete" = "Eliminar perfil";
+"profiles.delete_title" = "Eliminar Perfil";
+"profiles.delete_confirm" = "¿Estás seguro de que quieres eliminar \"%@\"? Esto eliminará todas las credenciales y configuraciones asociadas.";
+"profiles.create_title" = "Crear Nuevo Perfil";
+"profiles.name_label" = "Nombre del Perfil (opcional)";
+"profiles.name_placeholder" = "Dejar vacío para nombre aleatorio";
+"profiles.name_hint" = "Si se deja vacío, ¡se generará un nombre aleatorio divertido!";
+
+/* ==================== */
+/* MARK: - Multi-Profile Display */
+/* ==================== */
+"multiprofile.title" = "Visualización Multi-Perfil";
+"multiprofile.subtitle" = "Mostrar múltiples perfiles en la barra de menú";
+"multiprofile.enable_title" = "Mostrar Múltiples Perfiles";
+"multiprofile.enable_description" = "Mostrar perfiles seleccionados como iconos compactos lado a lado";
+"multiprofile.select_profiles" = "Seleccionar perfiles para mostrar:";
+"multiprofile.info" = "Cada perfil muestra sesión (anillo interior) y semana (anillo exterior) con nombre del perfil";
+"multiprofile.active_badge" = "Activo";
+"multiprofile.at_least_one" = "Al menos un perfil debe estar seleccionado";
+"multiprofile.icon_style" = "Estilo de Icono";
+"multiprofile.show_week" = "Mostrar Uso Semanal";
+"multiprofile.show_week_description" = "Mostrar uso semanal además de la sesión";
+"multiprofile.show_label" = "Mostrar Nombre del Perfil";
+"multiprofile.show_label_description" = "Mostrar nombre del perfil debajo del icono";
+"multiprofile.use_system_color" = "Usar Color del Sistema";
+"multiprofile.use_system_color_description" = "Usar el color de acento del Mac en lugar de los colores de estado";
+
+/* ==================== */
+/* MARK: - General Settings (Profile-Level) */
+/* ==================== */
+"general.title" = "General";
+"general.subtitle" = "Intervalo de actualización, inicio automático y notificaciones";
+"general.refresh_title" = "Intervalo de Actualización";
+"general.refresh_subtitle" = "Con qué frecuencia verificar las actualizaciones de uso";
+"general.refresh_seconds" = "%d segundos";
+"general.refresh_min" = "10s";
+"general.refresh_max" = "300s";
+"general.autostart_title" = "Inicio Automático de Sesión";
+"general.autostart_subtitle" = "Iniciar automáticamente una nueva sesión cuando sea necesario";
+"general.autostart_toggle" = "Inicio Automático de Nueva Sesión";
+"general.autostart_description" = "Enviar automáticamente un mensaje cuando se reinicie la sesión";
+"general.autostart_requirement" = "• Clave de sesión configurada en Credenciales → pestaña Codex.ai";
+"general.notifications_title" = "Notificaciones";
+"general.notifications_subtitle" = "Recibir notificaciones sobre hitos de uso";
+"general.connected" = "Conectado";
+"general.not_connected" = "No Conectado";
+
+/* ==================== */
+/* MARK: - Updates Settings */
+/* ==================== */
+"updates.version_info" = "Información de Versión";
+"updates.update_preferences" = "Preferencias de Actualización";
+"updates.version_label" = "v%@ (%@)";
+
+/* ==================== */
+/* MARK: - Appearance (Additional) */
+/* ==================== */
+"appearance.global_subtitle" = "Personalizar el comportamiento del ícono de la barra de menú";
+"appearance.metrics_subtitle" = "Seleccionar qué métricas mostrar en la barra de menú";
+
+/* ==================== */
+/* MARK: - Metric Card */
+/* ==================== */
+"metric.show_countdown" = "Mostrar tiempo hasta la próxima sesión";
+"metric.countdown_description" = "Mostrar tiempo restante (ej., →2H) en el ícono";
+
+/* ==================== */
+/* MARK: - Personal Usage (Additional) */
+/* ==================== */
+"personal.configuration_title" = "Configuración";
+"personal.status_connected" = "Conectado";
+"personal.status_not_connected" = "No Conectado";
+
+/* ==================== */
+/* MARK: - Language Settings */
+/* ==================== */
+"language.title" = "Idioma";
+"language.subtitle" = "Elige tu idioma preferido";
+"language.select_language" = "Seleccionar Idioma";
+"language.available" = "Idiomas Disponibles";
+"language.restart_required" = "Reinicio Requerido";
+"language.restart_message" = "La aplicación necesita reiniciarse para que los cambios de idioma tengan efecto.";
+"language.restart_now" = "Reiniciar Ahora";
+"language.restart_later" = "Más Tarde";
+
+/* ==================== */
+/* MARK: - Common Actions (Additional) */
+/* ==================== */
+"common.create" = "Crear";
+"common.rename" = "Renombrar";
+"common.activate" = "Activar";
+"common.connected" = "Conectado";
+"common.not_connected" = "No Conectado";
+"common.back" = "Atrás";
+"common.next" = "Siguiente";
+"common.remove" = "Eliminar";
+"common.switch" = "Cambiar";
+
+/* ==================== */
+/* MARK: - Popover/Menu Bar */
+/* ==================== */
+"popover.manage_profiles" = "Gestionar Perfiles";
+"popover.no_profile" = "Sin Perfil";
+"popover.profiles_count" = "%d perfiles";
+"popover.profile_count_singular" = "1 perfil";
+
+/* ==================== */
+/* MARK: - Setup Wizard */
+/* ==================== */
+"setup.step.enter_session_key" = "Ingresar Clave";
+"wizard.test_connection" = "Probar Conexión";
+"wizard.select_org_title" = "¿Qué organización quieres rastrear?";
+"wizard.select_org_subtitle" = "Selecciona la organización de Codex para monitoreo de uso";
+"wizard.config_summary" = "Resumen de Configuración";
+"wizard.session_key" = "Clave de Sesión";
+"wizard.api_session_key" = "Clave de Sesión API";
+"wizard.organization" = "Organización";
+"wizard.organization_id" = "ID: %@";
+"wizard.select_organization" = "Seleccionar Organización";
+"wizard.choose_organization" = "Elige qué organización rastrear";
+"wizard.review_config" = "Revisar Configuración";
+"wizard.confirm_settings" = "Confirma tu configuración antes de guardar";
+"wizard.key_will_update" = "La clave de sesión será actualizada";
+"wizard.api_key_will_update" = "La clave de sesión API será actualizada";
+
+/* ==================== */
+/* MARK: - CLI Account */
+/* ==================== */
+"cli.access_token" = "Token de Acceso";
+"cli.subscription" = "Suscripción";
+"cli.scopes" = "Alcances";
+"cli.sync_instructions" = "Haz clic en 'Sincronizar desde Codex Code' a continuación para importar tus credenciales";
+"cli.about_title" = "Acerca de la Sincronización de Cuenta CLI";
+"cli.benefits" = "Beneficios:";
+"cli.tracking_note" = "Nota: El seguimiento de uso utiliza credenciales de Codex.ai. Las credenciales CLI son solo para cambio de cuentas.";
+
+/* ==================== */
+/* MARK: - Settings Sections (Titles & Descriptions) */
+/* ==================== */
+"section.credentials" = "CREDENCIALES";
+"section.active_profile" = "Perfil Activo";
+"section.settings" = "CONFIGURACIÓN";
+"section.app" = "APLICACIÓN";
+
+"section.codexai_title" = "Codex.ai";
+"section.codexai_desc" = "Credenciales de Codex.ai";
+"section.api_console_title" = "Consola API";
+"section.api_console_desc" = "Credenciales de la Consola API";
+"section.cli_account_title" = "Cuenta CLI";
+"section.cli_account_desc" = "Sincronización de cuenta CLI";
+"section.appearance_title" = "Apariencia";
+"section.appearance_desc" = "Apariencia de la barra de menú";
+"section.general_title" = "General";
+"section.general_desc" = "Configuración general";
+"section.manage_profiles_title" = "Gestionar Perfiles";
+"section.manage_profiles_desc" = "Gestionar perfiles";
+
+/* ==================== */
+/* MARK: - Creator Info */
+/* ==================== */
+"creator.name" = "Hamed Elfayome";
+"creator.username" = "@hamed-elfayome";
+
+/* ==================== */
+/* MARK: - Wizard Steps & Actions */
+/* ==================== */
+"wizard.enter_key" = "Introducir Clave";
+"wizard.select_org" = "Seleccionar Org";
+"wizard.confirm" = "Confirmar";
+"wizard.testing" = "Probando...";
+"wizard.test_connection" = "Probar Conexión";
+"wizard.fetching" = "Obteniendo...";
+"wizard.fetch_organizations" = "Obtener Organizaciones";
+"wizard.saving" = "Guardando...";
+"wizard.save_configuration" = "Guardar Configuración";
+
+/* ==================== */
+/* MARK: - CLI Account Sync */
+/* ==================== */
+"cli.title" = "Cuenta CLI";
+"cli.subtitle" = "Sincroniza tu cuenta de Codex Code";
+"cli.synced" = "Cuenta CLI Sincronizada";
+"cli.not_synced" = "No Sincronizada";
+"cli.account_details" = "Detalles de Cuenta";
+"cli.credentials_synced" = "Tus credenciales CLI sincronizadas";
+"cli.no_credentials" = "Aún no hay credenciales sincronizadas";
+"cli.resync" = "Re-sincronizar";
+"cli.sync_from_code" = "Sincronizar desde Codex Code";
+"cli.benefit_1" = "Cambio automático de inicio de sesión de Codex Code con perfiles";
+"cli.benefit_2" = "Mantener la aplicación CLI y las cuentas sincronizadas";
+"cli.benefit_3" = "Actualizar credenciales automáticamente al cambiar de perfil";
+
+/* ==================== */
+/* MARK: - Additional Keys */
+/* ==================== */
+"api.single_organization" = "Se encontró y seleccionó automáticamente una sola organización";
+"api.remove_title" = "Eliminar Credenciales";
+"api.remove_subtitle" = "Eliminar permanentemente tu clave de sesión de la Consola API de este perfil";
+"codexcode.button_apply" = "Aplicar";
+"codexcode.button_reset" = "Restablecer";
+"error.generic" = "Error: %@";
+"personal.button_saving" = "Guardando...";
+"personal.button_setup_wizard" = "Asistente de Configuración";
+"personal.button_open_codex" = "Abrir codex.ai";
+"personal.success_key_saved" = "Clave de sesión guardada correctamente";
+"personal.remove_title" = "Eliminar Credenciales";
+"personal.remove_subtitle" = "Eliminar permanentemente tu clave de sesión de Codex.ai de este perfil";
+"about.run_setup_wizard" = "Ejecutar Asistente de Configuración";
+
+/* Migration & Reset */
+"wizard.migrate_old_data" = "¿Tiene datos de una versión anterior?";
+"wizard.migrate_description" = "Si tenía una versión anterior instalada, haga clic a continuación para importar sus perfiles y configuraciones antiguos. Esto solicitará permiso del sistema para acceder a los datos.";
+"wizard.migrate_button" = "Migrar datos";
+"wizard.skip_migration" = "Omitir";
+"wizard.migration_success" = "✅ Se migraron correctamente %d elementos";
+"wizard.migration_failed" = "⚠️ Error en la migración: %@";
+"wizard.migration_skipped" = "Migración omitida. Puede sincronizar datos antiguos manualmente más tarde.";
+"about.reset_app_data" = "Restablecer datos de la app";
+"about.reset_confirmation_title" = "¿Restablecer todos los datos de la app?";
+"about.reset_confirm" = "Restablecer";
+"about.reset_confirmation_message" = "Esto eliminará permanentemente todos los perfiles, credenciales y configuraciones. La aplicación se cerrará y deberá configurarla nuevamente. Esto no se puede deshacer.";
+
+/* Codex Code Info */
+"wizard.codex_code_info_title" = "¿Usando Codex Code?";
+"wizard.codex_code_info_description" = "El seguimiento de uso funcionará, pero la línea de estado CLI y el inicio automático de sesión no funcionarán sin clave de sesión";
+"wizard.codex_code_skip_setup" = "Omitir configuración";
+
+/* Migration Strings */
+"wizard.migrate_description_short" = "Importar datos de perfiles antiguos de la versión anterior de la aplicación";
+"wizard.skip_migration" = "Omitir";
+"wizard.migration_skipped" = "Omitido";

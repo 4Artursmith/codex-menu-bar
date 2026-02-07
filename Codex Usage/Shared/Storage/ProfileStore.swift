@@ -1,0 +1,159 @@
+//
+//  ProfileStore.swift
+//  Codex Usage
+//
+//  Created by Codex Code on 2026-01-07.
+//
+
+import Foundation
+
+/// Manages storage and retrieval of profiles and profile-related data
+class ProfileStore {
+    static let shared = ProfileStore()
+
+    private let defaults: UserDefaults
+    private let keychainService = KeychainService.shared
+    private var lastSavedProfilesHash: Int?
+    private var lastLoadedProfilesHash: Int?
+
+    private enum Keys {
+        static let profiles = "profiles_v3"
+        static let activeProfileId = "activeProfileId"
+        static let displayMode = "profileDisplayMode"
+        static let multiProfileConfig = "multiProfileDisplayConfig"
+    }
+
+    init() {
+        // Use standard UserDefaults (app container)
+        self.defaults = UserDefaults.standard
+        LoggingService.shared.log("ProfileStore: Using standard app container storage")
+    }
+
+    // MARK: - Profile Management
+
+    func saveProfiles(_ profiles: [Profile]) {
+        do {
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(profiles)
+            let dataHash = data.hashValue
+
+            if defaults.data(forKey: Keys.profiles) == data {
+                return
+            }
+
+            defaults.set(data, forKey: Keys.profiles)
+
+            // Verify save and avoid noisy duplicate logs
+            if let savedData = defaults.data(forKey: Keys.profiles) {
+                if lastSavedProfilesHash != dataHash {
+                    LoggingService.shared.log("ProfileStore: Saved \(profiles.count) profiles (\(savedData.count) bytes)")
+                    lastSavedProfilesHash = dataHash
+                }
+            } else {
+                LoggingService.shared.logError("ProfileStore: Failed to verify save!")
+            }
+        } catch {
+            LoggingService.shared.logStorageError("saveProfiles", error: error)
+        }
+    }
+
+    func loadProfiles() -> [Profile] {
+        guard let data = defaults.data(forKey: Keys.profiles) else {
+            LoggingService.shared.log("ProfileStore: No profiles found in storage")
+            return []
+        }
+
+        do {
+            let profiles = try JSONDecoder().decode([Profile].self, from: data)
+            let dataHash = data.hashValue
+            if lastLoadedProfilesHash != dataHash {
+                LoggingService.shared.log("ProfileStore: Loaded \(profiles.count) profiles from storage")
+                lastLoadedProfilesHash = dataHash
+            }
+            return profiles
+        } catch {
+            LoggingService.shared.logStorageError("loadProfiles", error: error)
+            LoggingService.shared.logError("ProfileStore: Failed to decode profiles, returning empty array")
+            return []
+        }
+    }
+
+    func saveActiveProfileId(_ id: UUID) {
+        defaults.set(id.uuidString, forKey: Keys.activeProfileId)
+    }
+
+    func loadActiveProfileId() -> UUID? {
+        guard let uuidString = defaults.string(forKey: Keys.activeProfileId) else {
+            return nil
+        }
+        return UUID(uuidString: uuidString)
+    }
+
+    func saveDisplayMode(_ mode: ProfileDisplayMode) {
+        defaults.set(mode.rawValue, forKey: Keys.displayMode)
+    }
+
+    func loadDisplayMode() -> ProfileDisplayMode {
+        guard let rawValue = defaults.string(forKey: Keys.displayMode),
+              let mode = ProfileDisplayMode(rawValue: rawValue) else {
+            return .single
+        }
+        return mode
+    }
+
+    // MARK: - Multi-Profile Display Config
+
+    func saveMultiProfileConfig(_ config: MultiProfileDisplayConfig) {
+        do {
+            let data = try JSONEncoder().encode(config)
+            defaults.set(data, forKey: Keys.multiProfileConfig)
+        } catch {
+            LoggingService.shared.logStorageError("saveMultiProfileConfig", error: error)
+        }
+    }
+
+    func loadMultiProfileConfig() -> MultiProfileDisplayConfig {
+        guard let data = defaults.data(forKey: Keys.multiProfileConfig) else {
+            return .default
+        }
+        do {
+            return try JSONDecoder().decode(MultiProfileDisplayConfig.self, from: data)
+        } catch {
+            LoggingService.shared.logStorageError("loadMultiProfileConfig", error: error)
+            return .default
+        }
+    }
+
+    // MARK: - Credential Helpers
+
+    func saveProfileCredentials(_ profileId: UUID, credentials: ProfileCredentials) throws {
+        var profiles = loadProfiles()
+        guard let index = profiles.firstIndex(where: { $0.id == profileId }) else {
+            throw NSError(domain: "ProfileStore", code: 404, userInfo: [NSLocalizedDescriptionKey: "Profile not found"])
+        }
+
+        // Update credentials directly in profile
+        profiles[index].codexSessionKey = credentials.codexSessionKey
+        profiles[index].organizationId = credentials.organizationId
+        profiles[index].apiSessionKey = credentials.apiSessionKey
+        profiles[index].apiOrganizationId = credentials.apiOrganizationId
+        profiles[index].cliCredentialsJSON = credentials.cliCredentialsJSON
+
+        saveProfiles(profiles)
+    }
+
+    func loadProfileCredentials(_ profileId: UUID) throws -> ProfileCredentials {
+        let profiles = loadProfiles()
+        guard let profile = profiles.first(where: { $0.id == profileId }) else {
+            throw NSError(domain: "ProfileStore", code: 404, userInfo: [NSLocalizedDescriptionKey: "Profile not found"])
+        }
+
+        return ProfileCredentials(
+            codexSessionKey: profile.codexSessionKey,
+            organizationId: profile.organizationId,
+            apiSessionKey: profile.apiSessionKey,
+            apiOrganizationId: profile.apiOrganizationId,
+            cliCredentialsJSON: profile.cliCredentialsJSON
+        )
+    }
+}
