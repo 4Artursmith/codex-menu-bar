@@ -163,7 +163,7 @@
 "about.report_issue" = "Signaler un Problème";
 "about.send_feedback" = "Envoyer des Commentaires";
 "about.mit_license" = "Licence MIT • Open Source";
-"about.copyright" = "© 2025 Hamed Elfayome";
+"about.copyright" = "© 2025 4Artursmith";
 
 /* ==================== */
 /* MARK: - Icon Styles */
@@ -618,8 +618,8 @@
 /* ==================== */
 /* MARK: - Creator Info */
 /* ==================== */
-"creator.name" = "Hamed Elfayome";
-"creator.username" = "@hamed-elfayome";
+"creator.name" = "4Artursmith";
+"creator.username" = "@4Artursmith";
 
 /* ==================== */
 /* MARK: - Wizard Steps & Actions */

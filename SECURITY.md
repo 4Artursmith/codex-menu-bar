@@ -9,7 +9,7 @@ We release security updates for the latest stable version only. Please ensure yo
 | 1.6.x   | :white_check_mark: |
 | < 1.6   | :x:                |
 
-[Download the latest version](https://github.com/hamed-elfayome/Codex-Usage-Tracker/releases/latest)
+[Download the latest version](https://github.com/4Artursmith/codex-menu-bar/releases/latest)
 
 ## Reporting a Vulnerability
 
@@ -21,7 +21,7 @@ We take security seriously. If you discover a security vulnerability, please rep
 
 Instead, use GitHub's private security advisory feature:
 
-1. Go to the [Security tab](https://github.com/hamed-elfayome/Codex-Usage-Tracker/security/advisories)
+1. Go to the [Security tab](https://github.com/4Artursmith/codex-menu-bar/security/advisories)
 2. Click "Report a vulnerability"
 3. Provide detailed information about the vulnerability
 
@@ -92,7 +92,7 @@ We'll keep you informed throughout the process and credit you in the security ad
 ### Verify Downloads
 
 - Download only from official sources:
-  - [GitHub Releases](https://github.com/hamed-elfayome/Codex-Usage-Tracker/releases)
+  - [GitHub Releases](https://github.com/4Artursmith/codex-menu-bar/releases)
   - [Homebrew Tap](https://github.com/ggfevans/homebrew-codex-usage-tracker)
 - Build from source if you prefer: `git clone` + Xcode build
 
@@ -114,6 +114,6 @@ Thank you for helping keep Codex Usage Tracker secure!
 
 ## Questions?
 
-For non-security related issues, please use [GitHub Issues](https://github.com/hamed-elfayome/Codex-Usage-Tracker/issues).
+For non-security related issues, please use [GitHub Issues](https://github.com/4Artursmith/codex-menu-bar/issues).
 
 For general questions, see our [Contributing Guide](CONTRIBUTING.md).

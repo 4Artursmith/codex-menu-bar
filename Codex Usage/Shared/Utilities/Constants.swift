@@ -101,7 +101,7 @@ enum Constants {
     }
 
     // GitHub repository
-    static let githubRepoURL = "https://github.com/hamed-elfayome/Codex-Usage-Tracker"
+    static let githubRepoURL = "https://github.com/4Artursmith/codex-menu-bar"
 
     // GitHub star prompt timing (in seconds)
     enum GitHubPromptTiming {
@@ -131,8 +131,8 @@ enum Constants {
 
     // GitHub Repository Info
     enum GitHub {
-        static let owner = "hamed-elfayome"
-        static let repo = "Codex-Usage-Tracker"
+        static let owner = "4Artursmith"
+        static let repo = "codex-menu-bar"
         static let repoURL = "https://github.com/\(owner)/\(repo)"
     }
 }

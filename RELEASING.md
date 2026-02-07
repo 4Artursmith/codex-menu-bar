@@ -78,7 +78,7 @@ The tag push triggers three automated workflows:
 3. **Update Homebrew Cask workflow** (triggers after release)
    - Automatically updates Homebrew formula
 
-Monitor at: `https://github.com/4ArturSmith/codex-menu-bar/actions`
+Monitor at: `https://github.com/4Artursmith/codex-menu-bar/actions`
 
 ### 6. Verify Release
 
@@ -95,7 +95,7 @@ Monitor at: `https://github.com/4ArturSmith/codex-menu-bar/actions`
 
 - Check `CURRENT_PROJECT_VERSION` was incremented (not just `MARKETING_VERSION`)
 - Verify appcast.xml has higher `<sparkle:version>` number
-- Clear app caches: `~/Library/Caches/HamedElfayome.Codex-Usage/`
+- Clear app caches: `~/Library/Caches/com.artursmith.codexmenubar/`
 
 ### Signature validation error
 

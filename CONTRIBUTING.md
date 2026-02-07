@@ -54,13 +54,13 @@ Before you begin, ensure you have the following installed:
 
 2. **Clone your fork**
    ```bash
-   git clone https://github.com/YOUR_USERNAME/Codex-Usage-Tracker.git
-   cd Codex-Usage-Tracker
+   git clone https://github.com/4Artursmith/codex-menu-bar.git
+   cd codex-menu-bar
    ```
 
 3. **Add upstream remote**
    ```bash
-   git remote add upstream https://github.com/hamed-elfayome/Codex-Usage-Tracker.git
+   git remote add upstream https://github.com/4Artursmith/codex-menu-bar.git
    ```
 
 4. **Open in Xcode**
@@ -119,7 +119,7 @@ Codex Usage/
 ### Reporting Bugs
 
 Before submitting a bug report:
-1. Check existing [issues](https://github.com/hamed-elfayome/Codex-Usage-Tracker/issues) to avoid duplicates
+1. Check existing [issues](https://github.com/4Artursmith/codex-menu-bar/issues) to avoid duplicates
 2. Ensure you're running the latest version
 
 **When reporting a bug, include:**
@@ -338,8 +338,8 @@ git push origin main --tags
 
 ## Getting Help
 
-- **Questions?** Open a [Discussion](https://github.com/hamed-elfayome/Codex-Usage-Tracker/discussions)
-- **Found a bug?** Open an [Issue](https://github.com/hamed-elfayome/Codex-Usage-Tracker/issues)
+- **Questions?** Open a [Discussion](https://github.com/4Artursmith/codex-menu-bar/discussions)
+- **Found a bug?** Open an [Issue](https://github.com/4Artursmith/codex-menu-bar/issues)
 - **Want to chat?** Reach out to maintainers
 
 ---

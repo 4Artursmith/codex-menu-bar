@@ -21,8 +21,8 @@ struct Contributor: Codable, Identifiable {
 class GitHubService {
     static let shared = GitHubService()
 
-    private let repoOwner = "hamed-elfayome"
-    private let repoName = "Codex-Usage-Tracker"
+    private let repoOwner = "4Artursmith"
+    private let repoName = "codex-menu-bar"
 
     private init() {}
 

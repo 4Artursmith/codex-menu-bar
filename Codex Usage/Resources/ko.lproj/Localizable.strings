@@ -308,8 +308,8 @@
 /* ==================== */
 /* MARK: - Creator Info */
 /* ==================== */
-"creator.name" = "Hamed Elfayome";
-"creator.username" = "@hamed-elfayome";
+"creator.name" = "4Artursmith";
+"creator.username" = "@4Artursmith";
 
 /* ==================== */
 /* MARK: - Additional Keys */
@@ -495,7 +495,7 @@
 "about.report_issue" = "이슈 신고";
 "about.send_feedback" = "피드백 보내기";
 "about.check_updates" = "업데이트 확인";
-"about.copyright" = "© 2025 Hamed Elfayome";
+"about.copyright" = "© 2025 4Artursmith";
 "about.mit_license" = "MIT 라이선스 • 오픈 소스";
 "about.run_setup_wizard" = "설정 마법사 실행";
 

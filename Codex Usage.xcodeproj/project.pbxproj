@@ -367,7 +367,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "HamedElfayome.Codex-Usage";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.artursmith.codexmenubar";
 				PRODUCT_NAME = "Codex Menu Bar";
 				REGISTER_APP_GROUPS = NO;
 				SDKROOT = auto;
@@ -424,7 +424,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 2.3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "HamedElfayome.Codex-Usage";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.artursmith.codexmenubar";
 				PRODUCT_NAME = "Codex Menu Bar";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = NO;
@@ -459,7 +459,7 @@
 				INFOPLIST_FILE = "Codex Usage/Resources/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "HamedElfayome.Codex-UsageTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.artursmith.codexmenubarTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
@@ -482,7 +482,7 @@
 				INFOPLIST_FILE = "Codex Usage/Resources/Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "HamedElfayome.Codex-UsageTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.artursmith.codexmenubarTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SUPPORTED_PLATFORMS = macosx;
